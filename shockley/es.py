@@ -29,11 +29,11 @@ def leiaFloat(msg):
             return n
 
 
-resposta = str(input('Qual a sua polarização (AP ou DTG): ')).lower()
-while resposta != 'ap' and resposta != 'dtg':
-    resposta = str(input('Digite novamente a sua polarização: '))
+polarizacao = str(input('Qual a sua polarização (AP ou DTG): ')).lower()
+while polarizacao != 'ap' and polarizacao != 'dtg':
+    polarizacao = str(input('Digite novamente a sua polarização: '))
 
-if resposta == 'dtg':
+if polarizacao == 'dtg':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss em mA: ') * 0.001
     rg1 = leiaInt('Rg1: ')
@@ -116,7 +116,7 @@ if resposta == 'dtg':
     print('Obrigado por usar o nosso programa. \nFINALIZANDO...\n\n')
     sleep(1)
 
-elif resposta == 'ap':
+elif polarizacao == 'ap':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss: ') * 0.001
     vf = leiaInt('Valor da fonte: ')
