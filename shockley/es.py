@@ -59,7 +59,7 @@ if resposta == 'dtg':
     delta = b**2 - (4 * a * c)
     print(f'\n∆ = {delta}')
 
-    print(f'Id = ({b * -1} ± {sqrt(delta)})/{2 * a}')
+    print(f'0 = ({b * -1} ± {sqrt(delta)})/{2 * a}')
 
     print(f'\nx´ = {(b * -1 + sqrt(delta))/(2 * a)} A')
     print(f'x´´ = {(b * -1 - sqrt(delta))/(2 * a)} A \n')
