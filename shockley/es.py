@@ -113,8 +113,8 @@ if polarizacao == 'dtg':
                 print(f'{i} = {v:.4f} V')
         print('=' * 25)
 
-    print('Obrigado por usar o nosso programa. \nFINALIZANDO...\n\n')
-    sleep(1)
+        print('Obrigado por usar o nosso programa. \nFINALIZANDO...\n\n')
+        sleep(1)
 
 elif polarizacao == 'ap':
     vgsoff = leiaFloat('Vgsoff: ')
