@@ -193,7 +193,5 @@ elif polarizacao == 'ap':
                 print(f'{i} = {v:.4f} V')
         print('=' * 25)
 
-        print('Obrigado por usar o nosso programa. \nFINALIZANDO...\n\n')
-        sleep(1)
-
+        
     
