@@ -1,7 +1,7 @@
 from math import pow, sqrt
 from time import sleep
 valores = {}
-
+rds = 0
 
 def leiaInt(msg):
     while True:
@@ -27,6 +27,21 @@ def leiaFloat(msg):
             return 0
         else:
             return n
+        
+
+def leiaResistor(msg):
+
+    r = str(input(msg)).strip()
+    if 'k' in r or 'K' in r:
+        r = r.replace('k', '').replace('K', '')
+        if '.' in r:
+            return int(float(r) * 1000)
+        elif len(r) > 1:
+            return int(r[:-1]) * 1000 + int(r[-1]) * 100 
+        else:
+            return int(r) * 1000
+
+    
 
 
 polarizacao = str(input('Qual a sua polarização (AP ou DTG): ')).lower()
@@ -36,11 +51,16 @@ while polarizacao != 'ap' and polarizacao != 'dtg':
 if polarizacao == 'dtg':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss em mA: ') * 0.001
-    rg1 = leiaInt('Rg1: ')
-    rg2 = leiaInt('Rg2: ')
     vf = leiaInt('valor da fonte: ')
-    rs = leiaInt('Rs: ')
-    rd = leiaInt('Rd: ')
+    rs = leiaResistor('Rs: ')
+    rd = leiaResistor('Rd: ')
+    rg1 = leiaResistor('Rg1: ')
+    rg2 = leiaResistor('Rg2: ')
+    if vgsoff < 0:
+        rds = (-1 * vgsoff)/idss
+    else:
+        rds = vgsoff/idss
+
     print('PROCESSANDO INFORMAÇÕES...')
     sleep(1)
 
@@ -65,12 +85,10 @@ if polarizacao == 'dtg':
     print(f'x´´ = {(b * -1 - sqrt(delta))/(2 * a)} A \n')
     id = (b * -1 - sqrt(delta))/(2 * a)
     vds = vf - id * (rd + rs)
-
-    if vds < 0:
-        if vgsoff < 0:
-            rds = (-1 * vgsoff)/idss
-        else:
-            rds = vgsoff/idss
+    vrds = id * rds
+    
+    if vds < vrds:
+        
         idohm = vf / (rds + rd + rs)
 
         valores['Id'] = idohm
@@ -120,8 +138,12 @@ elif polarizacao == 'ap':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss: ') * 0.001
     vf = leiaInt('Valor da fonte: ')
-    rs = leiaInt('Rs: ')
-    rd = leiaInt('Rd: ')
+    rs = leiaResistor('Rs: ')
+    rd = leiaResistor('Rd: ')
+    if vgsoff < 0:
+        rds = (-1 * vgsoff)/idss
+    else:
+        rds = vgsoff/idss
 
     print('PROCESSANDO INFORMAÇÕES...')
     sleep(1)
@@ -144,13 +166,10 @@ elif polarizacao == 'ap':
 
     id = ((-1*b) - (sqrt(delta)))/ (2 * a)
     vds = vf - id * (rd + rs)
+    vrds = id * rds
 
-    if vds < 0:
-        if vgsoff < 0:
-            rds = (-1 * vgsoff)/idss
-        else:
-            rds = vgsoff/idss
-        
+    if vds < vrds:
+
         idohm = vf/(rds + rd + rs)
         
         valores['Id'] = idohm
