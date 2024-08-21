@@ -1,15 +1,15 @@
 body {
-    background-color: #e5e5e5;
+    background-color: #F2E3D5;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 10px;
     margin: 0;
 }
 
 header {
-    background-color: #003366;
-    color: white;
+    background-color: #012E40;
+    color: #F2E3D5;
     padding: 15px 20px;
-    display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
@@ -25,6 +25,7 @@ nav ul {
     gap: 15px;
 }
 nav ul li {
+    padding: 5px 0px;
     display: inline;
 }
 nav ul li a {
@@ -44,4 +45,35 @@ nav ul li a:hover {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+nav {
+    margin-left: 5px;
+    display: inline;
+}
+
+main {
+    background-color: aquamarine;
+}
+
+h3 {
+    right: 20px;
+    position: absolute;
+    top: 50px;
+}
+
+li {
+    list-style: none;
+}
+div ul li {
+    display: inline;
+    padding: 0px 12px;
+    
+}
+
+div ul {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    margin-right: 45px;
 }
