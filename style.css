@@ -3,7 +3,7 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 10px;
     margin: 0;
-    color: #144e61;
+    color: rgba(0, 0, 0, 0.715);
 }
 
 header {
@@ -84,4 +84,13 @@ div ul {
 h2 {
     margin-left: 40px;
     margin-top: 15px;
+    
+}
+
+main {
+    font-size: 15px;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    
 }
