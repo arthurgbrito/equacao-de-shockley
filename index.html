@@ -22,23 +22,24 @@
                 <li><a href="#about">Reiniciar</a></li>
                 <li><a href="#contact">Algo</a></li>
             </ul>
-            <h3>Criado e idealizado por <strong>Arthur Gessler de Brito</strong></h3>
+            <h3 class="criacao">Criado e idealizado por <strong>Arthur Gessler de Brito</strong></h3>
         </nav>
     </header>
     <section>
-        <main>
+        <main id="infos">
+            
             <h2>Selecione a sua Polarizão:</h2>
             
             <ul>
-                <li><input type="radio" name="pol" id="dtg"><label for="dtg" style="font-size: 15px;">DTG</label></li>
-                <li><input type="radio" name="pol" id="ap"><label for="ap" style="font-size: 15px;">Autopolarização</label></li>
-                <li><input type="radio" name="pol" id="pf"><label for="pf" style="font-size: 15px;">Porta Fixa</label></li>
-                <li><input type="button" value="Feitoria"></li>
+                <li><input type="radio" name="pol" id="dtg" value="dtg"><label for="dtg" style="font-size: 15px;">DTG</label></li>
+                <li><input type="radio" name="pol" id="ap" value="ap"><label for="ap" style="font-size: 15px;">Autopolarização</label></li>
+                <li><input type="radio" name="pol" id="pf" value="pf"><label for="pf" style="font-size: 15px;">Porta Fixa</label></li>
+                <li><input type="button" value="Feitoria" class="feitoria" onclick="Verificapol()"></li>
             </ul>
             
             
         </main>
     </section>
-
+    <script src="script.js"></script>
 </body>
 </html>
