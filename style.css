@@ -91,7 +91,7 @@ main {
     font-size: 15px;
     margin: 0 auto;
     justify-content: center;
-    display: flex;
+    display: inline;
     left: 0;
     position: fixed;
 }
