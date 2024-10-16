@@ -121,6 +121,6 @@ main {
     background-color: #012E40;
     color: white;
     box-shadow: #012E40 0px 0px 0px 0px;
-    transform: translateY(5px);
+    transform: translateY(2px);
     transition: 100ms;
 }
