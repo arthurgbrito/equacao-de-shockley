@@ -138,8 +138,8 @@ elif polarizacao == 'ap':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss: ') * 0.001
     vf = leiaInt('Valor da fonte: ')
-    rs = leiaResistor('Rs: ')
-    rd = leiaResistor('Rd: ')
+    rs = leiaInt('Rs: ')
+    rd = leiaInt('Rd: ')
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
