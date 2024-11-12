@@ -51,7 +51,7 @@ while polarizacao != 'ap' and polarizacao != 'dtg':
 if polarizacao == 'dtg':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss em mA: ') * 0.001
-    vf = leiaInt('valor da fonte: ')
+    vf = leiaFloat('valor da fonte: ')
     rs = leiaResistor('Rs: ')
     rd = leiaResistor('Rd: ')
     rg1 = leiaResistor('Rg1: ')
@@ -137,9 +137,9 @@ if polarizacao == 'dtg':
 elif polarizacao == 'ap':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss: ') * 0.001
-    vf = leiaInt('Valor da fonte: ')
-    rs = leiaInt('Rs: ')
+    vf = leiaFloat('Valor da fonte: ')
     rd = leiaInt('Rd: ')
+    rs = leiaInt('Rs: ')
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
