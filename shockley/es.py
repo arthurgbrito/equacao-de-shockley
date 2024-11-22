@@ -52,10 +52,10 @@ if polarizacao == 'dtg':
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss em mA: ') * 0.001
     vf = leiaFloat('valor da fonte: ')
-    rs = leiaResistor('Rs: ')
-    rd = leiaResistor('Rd: ')
-    rg1 = leiaResistor('Rg1: ')
-    rg2 = leiaResistor('Rg2: ')
+    rs = leiaInt('Rs: ')
+    rd = leiaInt('Rd: ')
+    rg1 = leiaInt('Rg1: ')
+    rg2 = leiaInt('Rg2: ')
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
