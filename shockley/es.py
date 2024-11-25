@@ -29,6 +29,14 @@ def leiaFloat(msg):
             return n
 
 
+def leiaResistor(msg):
+    n = str(msg)
+    if 'k' in n or 'K' in n:
+        
+
+
+
+
 polarizacao = str(input('Qual a sua polarização (AP ou DTG): ')).lower().strip() 
 
 while polarizacao != 'ap' and polarizacao != 'dtg':
