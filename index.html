@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Projeto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>Calculadora da Equação de Shockley</h1>
+            <ul>
+                <li><a href="https://github.com/arthurgbrito"><img src="imagens/icone-github.svg" alt="Github"></a></li>
+                <li><a href="https://www.instagram.com/_a.britoo/"><img src="imagens/icone-instagram-colorido.svg" alt="Instagram"></a></li>
+            </ul>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Como Usar</a></li>
+                <li><a href="#about">Reiniciar</a></li>
+                <li><a href="#contact">Algo</a></li>
+            </ul>
+            <h3 class="criacao">Criado e idealizado por <strong>Arthur Gessler de Brito</strong></h3>
+        </nav>
+    </header>
+    <section>
+        <main id="infos">
+            
+            <h2>Selecione a Polarizão:</h2>
+            
+            <ul>
+                <li><input type="radio" name="pol" id="dtg" value="dtg"><label for="dtg" style="font-size: 15px;">DTG</label></li>
+                <li><input type="radio" name="pol" id="ap" value="ap"><label for="ap" style="font-size: 15px;">Autopolarização</label></li>
+                <li><input type="radio" name="pol" id="pf" value="pf"><label for="pf" style="font-size: 15px;">Porta Fixa</label></li>
+                <li><input type="button" value="Feitoria" class="feitoria" onclick="Verificapol()"></li>
+            </ul>
+
+
+            <div>
+                <p>Preencha os campos abaixo com os valores do seu circuito:  </p>
+                <div>
+                    <label for="Vf">Valor da fonte:</label><input type="text" name="" id="Vf">
+                </div>
+            </div>
+            
+        </main>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
