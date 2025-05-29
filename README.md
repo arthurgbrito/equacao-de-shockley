@@ -1,2 +1,3 @@
 # equacao-de-shockley
- Fiz esse código em python que faz a equação de shocley e exibe os valores  de: tensão do resistor de dreno, tensão no resistor de fonte, tensão dreno-fonte, tensão gate-fonte, corrente dreno-fonte e potência dissipada pelo JFET
+
+Enquanto eu estava no terceiro ano de Eletrônica era preciso fazer o cáclulo da corrente presente nos terminais de Dreno-Fonte do JFET. Para estudar para as provas era necessário refazer provas antigas e questões que já existiam para aprender, mas nós não sabíamos se havíamos chegado no resultado certo, pois é feita uma Bhaskara com números com muitas casas decimais. Com isso tive a ideia de criar um script com o intuito de nos ajudar a corrigir as nossas questões e nos ajudar a estudar. Nesse script é necessário fornecer os dados do circuito que foram passados no enunciado e assim ele retornava o valor da corrente e das tensões nos resistores e nos terminais do JFET, nos ajudando a corrigir as questões.
