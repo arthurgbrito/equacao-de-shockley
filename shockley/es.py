@@ -48,8 +48,9 @@ def leiaResistor(msg: str):
             for multi in r:
                 if "k" == r or "K" == r or "M" == r:
                     r.replace(f"{multi}", "")
+                    
                     return leiaMultiplicador(multi)
-
+    
         
 
 def leiaMultiplicador(indice: str):
@@ -83,9 +84,13 @@ if polarizacao == 'dtg':
 
     vf = leiaInt('valor da fonte: ')
     rs = leiaResistor('Rs: ')
+    print(rs)
     rd = leiaResistor('Rd: ')
+    print(rd)
     rg1 = leiaResistor('Rg1: ')
+    print(rg1)
     rg2 = leiaResistor('Rg2: ')
+    print(rg2)
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
