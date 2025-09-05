@@ -1,9 +1,11 @@
 from math import pow, sqrt
 from time import sleep
+import re
+
 valores = {}
 rds = 0
 
-def leiaInt(msg):
+def leiaInt(msg: str):
     while True:
         try:
             n = int(input(msg))
@@ -16,7 +18,7 @@ def leiaInt(msg):
             return n
 
 
-def leiaFloat(msg):
+def leiaFloat(msg: str):
     while True:
         try:
             n = float(input(msg))
@@ -29,39 +31,45 @@ def leiaFloat(msg):
             return n
         
 
-def leiaResistor(msg):
+def leiaResistor(msg: str):
 
-    r = str(input(msg)).strip()
+    r = str(input(msg)).strip().replace(",", ".")
 
-    while not("k" in r) or not("K" in r) or not("M" in r):
-        r = str(input("Erro ao ler o valor")).strip()
+    if r.isalpha():
+        print("So letra")
 
-    for i in r:
-        if type(i) == str:
-            multiplicador = leiaMultiplicador(i)
-            r.replace(f'{i}', "")
-            print(f'{i} e {multiplicador}')
+    if isnumber(r):
+        print("Só numero")
+        return float(r)
+    
+    if r.isalnum:
+        if "k" in r or "K" in r or "M" in r:
+    
+            for multi in r:
+                if "k" == r or "K" == r or "M" == r:
+                    r.replace(f"{multi}", "")
+                    return leiaMultiplicador(multi)
+
         
 
-
-    #if 'k' in r or 'K' in r:
-     #   r = r.replace('k', '').replace('K', '')
-      #  if '.' in r:
-       #     return int(float(r) * 1000)
-        #elif len(r) > 1:
-         #   return int(r[:-1]) * 1000 + int(r[-1]) * 100 
-        #else:
-         #   return int(r) * 1000
-
-
-
-def leiaMultiplicador(indice):
+def leiaMultiplicador(indice: str):
     
     while indice != "k" or indice != "K" or indice != "M": return 1
 
     if indice == "k" or indice == "K": return 1000
 
     elif indice == "M": return 1000000
+
+
+def isnumber(s: str):
+    
+    s.strip()
+
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 
 polarizacao = str(input('Qual a sua polarização (AP ou DTG): ')).lower().strip() 
