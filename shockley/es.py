@@ -32,15 +32,36 @@ def leiaFloat(msg):
 def leiaResistor(msg):
 
     r = str(input(msg)).strip()
-    if 'k' in r or 'K' in r:
-        r = r.replace('k', '').replace('K', '')
-        if '.' in r:
-            return int(float(r) * 1000)
-        elif len(r) > 1:
-            return int(r[:-1]) * 1000 + int(r[-1]) * 100 
-        else:
-            return int(r) * 1000
 
+    while not("k" in r) or not("K" in r) or not("M" in r):
+        r = str(input("Erro ao ler o valor")).strip()
+
+    for i in r:
+        if type(i) == str:
+            multiplicador = leiaMultiplicador(i)
+            r.replace(f'{i}', "")
+            print(f'{i} e {multiplicador}')
+        
+
+
+    #if 'k' in r or 'K' in r:
+     #   r = r.replace('k', '').replace('K', '')
+      #  if '.' in r:
+       #     return int(float(r) * 1000)
+        #elif len(r) > 1:
+         #   return int(r[:-1]) * 1000 + int(r[-1]) * 100 
+        #else:
+         #   return int(r) * 1000
+
+
+
+def leiaMultiplicador(indice):
+    
+    while indice != "k" or indice != "K" or indice != "M": return 1
+
+    if indice == "k" or indice == "K": return 1000
+
+    elif indice == "M": return 1000000
 
 
 polarizacao = str(input('Qual a sua polarização (AP ou DTG): ')).lower().strip() 
@@ -53,10 +74,10 @@ if polarizacao == 'dtg':
     idss = leiaFloat('Idss em mA: ') * 0.001
 
     vf = leiaInt('valor da fonte: ')
-    rs = leiaInt('Rs: ')
-    rd = leiaInt('Rd: ')
-    rg1 = leiaInt('Rg1: ')
-    rg2 = leiaInt('Rg2: ')
+    rs = leiaResistor('Rs: ')
+    rd = leiaResistor('Rd: ')
+    rg1 = leiaResistor('Rg1: ')
+    rg2 = leiaResistor('Rg2: ')
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
