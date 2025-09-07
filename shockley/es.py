@@ -1,10 +1,10 @@
 from math import pow, sqrt
 from time import sleep
-import re
 
 valores = {}
 rds = 0
 
+# Função feita por mim para não retornar erro para o usuário e não precisar reiniciar a execução do código
 def leiaInt(msg: str):
     while True:
         try:
@@ -17,7 +17,7 @@ def leiaInt(msg: str):
         else:
             return n
 
-
+# Função feita por mim para não retornar erro para o usuário e não precisar reiniciar a execução do código
 def leiaFloat(msg: str):
     while True:
         try:
@@ -30,42 +30,55 @@ def leiaFloat(msg: str):
         else:
             return n
         
-
+# Função feita por mim para ler valores de resistores, como "4k7", "10K", "3M3", e retornar os valores inteiros deles. Também aderido o tratamento de erro para melhorar a experiência do usuário 
 def leiaResistor(msg: str):
 
-    r = str(input(msg)).strip().replace(",", ".")
+    try:
+            
+        r = str(input(msg)).strip().replace(",", ".")
 
-    if r.isalpha():
-        print("So letra")
+        if r.isalpha(): return 0
 
-    if isnumber(r):
-        print("Só numero")
-        return float(r)
-    
-    if r.isalnum:
-        if "k" in r or "K" in r or "M" in r:
-    
-            for multi in r:
-                if "k" == r or "K" == r or "M" == r:
-                    r.replace(f"{multi}", "")
-                    
-                    return leiaMultiplicador(multi)
-    
+        elif isnumber(r): return float(r)
+        
+        elif r.isalnum:
+            if "k" in r or "K" in r or "M" in r:
+        
+                for multi in r:
+                    if "k" == multi or "K" == multi or "M" == multi:
+                        valor_Resistor = r.replace(f"{multi}", ".")
+
+                        multiplicador  = leiaMultiplicador(multi)                    
+                        break
+
+                #print(f"multiplicador: {multiplicador}")        
+                valor_Real = multiplicador  * float(valor_Resistor)
+
+                return valor_Real
+            
+            else: return 0
+    except (ValueError, TypeError):
+        print('\033[31m [ERRO] Digite um valor de resistor válido.\033[m')
+        return 0
+    except KeyboardInterrupt:
+        print('\n\033[31mUsuário optou em não digitar o número real\033[m.')
+        return 0
         
 
+# Função que lê o multiplicador utilizado pelo usuário
 def leiaMultiplicador(indice: str):
     
-    while indice != "k" or indice != "K" or indice != "M": return 1
+    while indice != "k" and indice != "K" and indice != "M": return 1
 
     if indice == "k" or indice == "K": return 1000
 
     elif indice == "M": return 1000000
 
 
+# Verificação de uma string para saber se a string toda é composta apenas de números
 def isnumber(s: str):
     
     s.strip()
-
     try:
         float(s)
         return True
@@ -79,18 +92,33 @@ while polarizacao != 'ap' and polarizacao != 'dtg':
     polarizacao = str(input('Digite novamente a sua polarização: '))
 
 if polarizacao == 'dtg':
+
+    # Leitura dos valores dos componentes do circuito, entregues pelas questões
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss em mA: ') * 0.001
 
     vf = leiaInt('valor da fonte: ')
+
     rs = leiaResistor('Rs: ')
-    print(rs)
+    while rs == 0:
+        print("\033[31m [ERRO] Valor inválido. Digite novamente:\033[m ")
+        rs = leiaResistor('Rs: ')
+    
     rd = leiaResistor('Rd: ')
-    print(rd)
+    while rd == 0:
+        print("\033[31m [ERRO] Valor inválido. Digite novamente:\033[m ")
+        rd = leiaResistor('Rd: ')
+    
     rg1 = leiaResistor('Rg1: ')
-    print(rg1)
+    while rg1 == 0:
+        print("\033[31m [ERRO] Valor inválido. Digite novamente:\033[m ")
+        rg1 = leiaResistor('Rg1: ')
+    
     rg2 = leiaResistor('Rg2: ')
-    print(rg2)
+    while rg2 == 0:
+        print("\033[31m [ERRO] Valor inválido. Digite novamente:\033[m ")
+        rg2 = leiaResistor('Rg2: ')
+    
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
@@ -98,6 +126,7 @@ if polarizacao == 'dtg':
 
     print('PROCESSANDO INFORMAÇÕES...')
     sleep(1)
+
 
     vgg = rg2 * (vf/(rg1 + rg2))
     termo1 = -1 * (vgg/vgsoff) + 1
@@ -114,6 +143,7 @@ if polarizacao == 'dtg':
     delta = b**2 - (4 * a * c)
     print(f'\n∆ = {delta}')
 
+    # ----------------------------------------- ERRO AO CALCULAR UMA RAIZ QUADRADA NEGATIVA ------------------------------------
     print(f'0 = ({b * -1} ± {sqrt(delta)})/{2 * a}')
 
     print(f'\nx´ = {(b * -1 + sqrt(delta))/(2 * a)} A')
@@ -171,11 +201,22 @@ if polarizacao == 'dtg':
         sleep(1)
 
 elif polarizacao == 'ap':
+
     vgsoff = leiaFloat('Vgsoff: ')
     idss = leiaFloat('Idss: ') * 0.001
+    
     vf = leiaFloat('Valor da fonte: ')
-    rd = leiaInt('Rd: ')
-    rs = leiaInt('Rs: ')
+
+    rs = leiaResistor('Rs: ')
+    while rs == 0:
+        print("\033[31m [ERRO] Valor inválido. Digite novamente:\033[m ")
+        rs = leiaResistor('Rs: ')
+    
+    rd = leiaResistor('Rd: ')
+    while rd == 0:
+        print("\033[31m [ERRO] Valor inválido. Digite novamente:\033[m ")
+        rd = leiaResistor('Rd: ')
+    
     if vgsoff < 0:
         rds = (-1 * vgsoff)/idss
     else:
